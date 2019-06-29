@@ -16,4 +16,3 @@ if 0 in num_list and total % 3 is 0:
     result = int(reduce(lambda a, b: a + b, num_list))
 
 print(result)
-

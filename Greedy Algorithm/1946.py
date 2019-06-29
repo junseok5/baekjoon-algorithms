@@ -1,10 +1,23 @@
-N1 = 5
-test_data1 = [(3, 2), (1, 4), (4, 1), (2, 3), (5, 5)]
-N2 = 7
-test_data2 = [(3, 6), (7, 3), (4, 2), (1, 4), (5, 7), (2, 5), (6, 1)]
+def solution(N, data_list):
+    data_list = sorted(data_list, key=lambda r: r[0])
+    max_pass = 0
+    min_intv = N
 
-"""
-서류 성적 오름 차순으로 정렬
-서류성적 1순위의 면접을 기준으로 잡는다.
-그 기준보다 더 잘한 면접 점수가 나온다면 합격시키고 다시 기준 점수로 잡는다.
-"""
+    for grade in data_list:
+        if grade[1] < min_intv:
+            min_intv = grade[1]
+            max_pass = max_pass + 1
+
+    return max_pass
+
+
+result_list = []
+TEST_CASE_NUM = int(input())
+
+for _ in range(TEST_CASE_NUM):
+    N = int(input())
+    data_list = [list(map(int, input().split())) for _ in range(N)]
+    result_list.append(solution(N, data_list))
+
+for result in result_list:
+    print(result)
